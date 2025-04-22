@@ -1,6 +1,9 @@
 Link :- http://marvelous-nougat-fb7e17.netlify.app
+
 Register and Login 
+
 Add applications and skill to see the ai generaterate result on the below topic
+
 Skill gap analysis: Based on job descriptions, the platform analyses which skills the student is missing or needs to improve.
 
 Skill recommendations: Suggest relevant courses, tutorials, or certifications based on missing skills.
