@@ -24,7 +24,7 @@ const AddApplicationPage = () => {
     setMessage("");
     setError("");
     try {
-      const response = await axios.post("http://localhost:5000/api/applications", {
+      await axios.post("https://internsightbackend.onrender.com/api/applications", {
         ...formData,
         userId: user.userId,
       });
@@ -40,6 +40,7 @@ const AddApplicationPage = () => {
       setError(err.response?.data?.message || "❌ Error adding application.");
     }
   };
+  
 
   return (
     <div style={styles.page}>

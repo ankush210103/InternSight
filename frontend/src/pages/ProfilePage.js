@@ -23,7 +23,7 @@ const ProfilePage = () => {
     };
 
     fetchSkills();
-  }, []);
+  }, [user]);
   if (!user || !user.userId) {
     return (
       <div style={{ textAlign: "center", padding: "20px" }}>
