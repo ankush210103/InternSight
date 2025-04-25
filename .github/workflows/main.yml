@@ -23,14 +23,14 @@ jobs:
 
       - name: 📦 Install Dependencies and Build React App
         run: |
-          cd client
+          cd frontend
           npm install
           npm run build
 
       - name: 🚀 Deploy to Netlify
         uses: nwtgck/actions-netlify@v2.0
         with:
-          publish-dir: ./client/build
+          publish-dir: ./frontend/build
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
