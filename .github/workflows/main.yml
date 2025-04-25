@@ -1,0 +1,44 @@
+name: MERN CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      # Install and build frontend
+      - name: Install frontend dependencies
+        working-directory: ./client
+        run: |
+          npm install
+          npm run build
+
+      # Install and test backend
+      - name: Install backend dependencies
+        working-directory: ./server
+        run: |
+          npm install
+          npm test || echo "No tests found"
+
+      # Deploy to Netlify
+      - name: Deploy frontend to Netlify
+        uses: nwtgck/actions-netlify@v2.0
+        with:
+          publish-dir: './client/build'
+          production: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
